@@ -1,0 +1,9 @@
+---
+- hosts: "{{ target_host }}" 
+  gather_facts: False
+  become: yes
+  vars_files:
+    - group_vars/flamingfig-refresh-env.yml
+  roles:
+    - substrate-refresh
+    - substrate-systemd

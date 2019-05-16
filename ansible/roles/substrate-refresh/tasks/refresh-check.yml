@@ -1,0 +1,35 @@
+- name: Download latest binary
+  get_url:
+    url: "{{ artifact_path }}"
+    dest: "{{ cache_dir }}/{{ app_name }}"
+    force: yes
+    mode: 0755
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: copy binary if nothing is present in the binary_dir
+  copy:
+    src: "{{ cache_dir }}/{{ app_name }}"
+    dest: "{{ binary_dir }}/{{ app_name }}"
+    remote_src: yes
+    mode: 0755
+    force: no
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: checksum current binary
+  stat:
+    path: "{{ binary_dir }}/{{ app_name }}"
+    get_checksum: yes
+  register: checksum_binary
+- name: checksum download cache
+  stat:
+    path: "{{ cache_dir }}/{{ app_name }}"
+    get_checksum: yes
+  register: checksum_cache
+- debug:
+     var: checksum_binary.stat.checksum
+- debug:
+     var: checksum_cache.stat.checksum
+- name: register substrate_update if a new binary is detected
+  command: /bin/true
+  when: checksum_binary.stat.checksum != checksum_cache.stat.checksum
+  register: substrate_update

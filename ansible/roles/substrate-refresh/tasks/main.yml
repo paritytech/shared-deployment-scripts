@@ -1,0 +1,4 @@
+- include_tasks: directories.yml
+- include_tasks: refresh-check.yml
+- include_tasks: refresh.yml
+  when: substrate_update.changed
