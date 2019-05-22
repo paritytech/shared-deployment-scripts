@@ -24,6 +24,6 @@
   when: systemd_updated.changed
 - name: systemd start "{{ app_name }}"
   systemd:
-    state: started
+    state: restarted 
     name: "{{ app_name }}"
   when: systemd_updated.changed
