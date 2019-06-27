@@ -1,3 +1,7 @@
+- name: systemd stop logstash 
+  systemd:
+    state: stopped 
+    name: "logstash"
 - name: systemd stop {{ app_name }} 
   systemd:
     state: stopped 
@@ -16,4 +20,7 @@
   systemd:
     state: started 
     name: "{{ app_name }}"
-
+- name: systemd start logstash 
+  systemd:
+    state: started 
+    name: "logstash"
