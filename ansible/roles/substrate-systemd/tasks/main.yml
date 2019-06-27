@@ -10,6 +10,11 @@
   file:
     path: "/var/log/{{ app_name }}"
     state: directory
+- name: systemd stop logstash
+  systemd:
+    state: stopped
+    name: "logstash"
+  when: systemd_updated.changed
 - name: enable {{ app_name }}  service 
   service:
     name: "{{ app_name }}"
@@ -26,4 +31,9 @@
   systemd:
     state: restarted 
     name: "{{ app_name }}"
+  when: systemd_updated.changed
+- name: systemd start logstash
+  systemd:
+    state: started
+    name: "logstash"
   when: systemd_updated.changed
