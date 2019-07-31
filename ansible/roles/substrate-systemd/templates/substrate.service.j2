@@ -3,7 +3,7 @@ Description={{ app_name }} Systemd Service
 
 [Service]
 EnvironmentFile=/etc/default/{{ app_name }}
-ExecStart={{ app_path }} --validator --name $NAME --key $KEY --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=debug,sync=trace,state-db=debug,gossip=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 1' --telemetry-url 'ws://telemetry-save.polkadot.io:1024 5'
+ExecStart={{ app_path }} --validator --name $NAME --key $KEY --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=debug,state-db=debug,gossip=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 1' --telemetry-url 'ws://telemetry-save.polkadot.io:1024 5'
 Restart=always
 User=parity
 Group=parity
