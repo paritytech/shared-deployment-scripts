@@ -6,6 +6,14 @@
     group: root
     mode: 0600
   register: systemd_updated
+- name: Copy chain spec
+  template:
+    src: "chainspec.json"
+    dest: /etc/chainspec.json
+    owner: root
+    group: root
+    mode: 0600
+  register: systemd_updated
 - name: create /var/log/{{ app_name }}
   file:
     path: "/var/log/{{ app_name }}"

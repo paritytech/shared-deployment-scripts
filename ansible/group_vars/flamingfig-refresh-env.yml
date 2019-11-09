@@ -1,3 +1,4 @@
 ---
 user: parity
 app_name: flamingfir 
+artifact_path: 'https://releases.parity.io/substrate/x86_64-debian:stretch/2.0.0-7d7e74fb7/substrate/substrate'
