@@ -1,9 +1,9 @@
 [Unit]
-Description={{ app_name }} Systemd Service 
+Description={{ app_name }} Systemd Service
 
 [Service]
 EnvironmentFile=/etc/default/{{ app_name }}
-ExecStart={{ app_path }} --validator --name $NAME --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=debug,sync=trace,state-db=debug,gossip=debug,sync=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 1' --telemetry-url 'ws://telemetry-save.polkadot.io:1024 5'
+ExecStart={{ app_path }} --chain /etc/chainspec.json --validator --reserved-nodes /ip4/35.246.224.91/tcp/30333/p2p/QmSk5HQbn6LhUwDiNMseVUjuRYhEtYj4aUZ6WfWoGURpdV --reserved-nodes /ip4/35.246.210.11/tcp/30333/p2p/QmWv9Ww7znzgLFyCzf21SR6tUKXrmHCZH9KhebeH4gyE9f --reserved-nodes /ip4/35.198.110.45/tcp/30333/p2p/QmTtcYKJho9vFmqtMA548QBSmLbmwAkBSiEKK3kWKfb6bJ --reserved-nodes /ip4/35.198.114.154/tcp/30333/p2p/QmQJmDorK9c8KjMF5PdWiH2WGUXyzJtgTeJ55S5gggdju6 --name $NAME --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=debug,gossip=debug,sync=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 1' --telemetry-url 'ws://telemetry-save.polkadot.io:1024 5'
 Restart=always
 User=parity
 Group=parity

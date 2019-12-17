@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ target_host }}" 
+- hosts: all 
   gather_facts: False
   become: yes
   vars_files:
