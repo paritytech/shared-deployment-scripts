@@ -29,10 +29,10 @@
      var: checksum_binary.stat.checksum
 - debug:
      var: checksum_cache.stat.checksum
-- name: register substrate_update if a new binary is detected
+- name: register polkadot_update if a new binary is detected
   command: /bin/true
   when: checksum_binary.stat.checksum != checksum_cache.stat.checksum
-  register: substrate_update
+  register: polkadot_update
 - name: Download latest binary
   get_url:
     url: "{{ subkey_path }}"

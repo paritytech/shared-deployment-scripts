@@ -1,5 +1,5 @@
 ---
 user: parity
 app_name: flamingfir
-artifact_path: 'https://releases.parity.io/substrate/x86_64-debian:stretch/2.0.0-a8ea665/substrate/substrate'
+artifact_path: 'https://substrate-rpc.parity.io/substrate-ashley-futures'
 subkey_path: 'https://releases.parity.io/substrate/x86_64-debian:stretch/2.0.0-a8ea665/subkey/subkey'

@@ -1,7 +1,7 @@
 - name: Copy {{ app_name }} systemd configuration
   template:
     src: "substrate.service.j2"
-    dest: /etc/systemd/system/{{ app_name }}.service 
+    dest: /etc/systemd/system/{{ app_name }}.service
     owner: root
     group: root
     mode: 0600
@@ -10,8 +10,8 @@
   template:
     src: "chainspec.json"
     dest: /etc/chainspec.json
-    owner: root
-    group: root
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
   register: systemd_updated
 - name: create /var/log/{{ app_name }}
@@ -23,11 +23,23 @@
     state: stopped
     name: "logstash"
   when: systemd_updated.changed
-- name: enable {{ app_name }}  service 
+- name: systemd stop flamingfir
+  systemd:
+    state: stopped
+    name: "flamingfir"
+  when: systemd_updated.changed
+#- name: wipe flamingfir db
+#  shell: su parity  -c 'rm -rf ~/.local/'
+- name: wipe flamingfir log
+  shell: 'rm -rf /var/log/flamingfir/*'
+- name: enable {{ app_name }}  service
   service:
     name: "{{ app_name }}"
     enabled: yes
-- name: Start {{ app_name }} service 
+- name: read systemd config changes
+  systemd:
+    daemon_reload: yes
+- name: Start {{ app_name }} service
   systemd:
     name: "{{ app_name }}"
     state: started
@@ -37,11 +49,14 @@
   when: systemd_updated.changed
 - name: systemd start "{{ app_name }}"
   systemd:
-    state: restarted 
+    state: restarted
     name: "{{ app_name }}"
-  when: systemd_updated.changed
-- name: systemd start logstash
-  systemd:
-    state: started
-    name: "logstash"
-  when: systemd_updated.changed
+#  when: systemd_updated.changed
+#- name: systemd start logstash
+#  systemd:
+#    state: started
+#    name: "logstash"
+#  when: systemd_updated.changed
+#- name: insert keys
+#  shell: /root/keys.sh
+#  become: yes
