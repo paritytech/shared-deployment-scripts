@@ -5,5 +5,5 @@
   vars_files:
     - group_vars/we-refresh-env.yml
   roles:
-    - polkadot-systemd
     - polkadot-refresh
+    - polkadot-systemd

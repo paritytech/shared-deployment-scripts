@@ -1,0 +1,5 @@
+---
+user: parity
+app_name: westend
+artifact_path: 'https://releases.parity.io/polkadot/x86_64-debian:stretch/v0.7.18/polkadot'
+subkey_path: 'https://releases.parity.io/substrate/x86_64-debian:stretch/latest/subkey/subkey'
