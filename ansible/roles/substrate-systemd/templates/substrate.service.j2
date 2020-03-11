@@ -3,7 +3,7 @@ Description={{ app_name }} Systemd Service
 
 [Service]
 EnvironmentFile=/etc/default/{{ app_name }}
-ExecStart={{ app_path }} --validator --chainspec /etc/chainspec.json --name $NAME --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=trace,gossip=debug,sync=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 10' --telemetry-url 'ws://kusama-telemetry-0.parity-kusama.parity.io:1024/ 1'
+ExecStart={{ app_path }} --validator --chain /etc/chainspec.json --name $NAME --node-key $NODE_KEY --in-peers 100 --out-peers 50 -lbabe=debug,afg=trace,gossip=debug,sync=debug --listen-addr /ip4/0.0.0.0/tcp/30333 --listen-addr /ip4/0.0.0.0/tcp/30334/ws --telemetry-url 'ws://telemetry.polkadot.io:1024 10' --telemetry-url 'ws://kusama-telemetry-0.parity-kusama.parity.io:1024/ 1'
 #--reserved-nodes   "/ip4/35.246.224.91/tcp/30333/p2p/QmaGKGpdm2iLiVCAnEcwrAhHxrcjMdGao4UubJxq7AF77n" --reserved-nodes /ip4/35.246.210.11/tcp/30333/p2p/QmbS1xrmWyP5h4xsPwAS7CJEJNStsuAUDUzhggqDJtLpou --reserved-nodes /ip4/35.198.114.154/tcp/30333/p2p/Qmeo7it7YGbhGZqkDGpgnR3xMRFSp6AutA9oTDZPQyny8h --reserved-nodes /ip4/35.198.110.45/tcp/30333/p2p/QmdSHZLmwEL5Axz5JvWNE2mmxU7qyd7xHBFpyUfktgAdg7
 Restart=always
 User=parity
