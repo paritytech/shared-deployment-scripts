@@ -3,7 +3,7 @@
   gather_facts: False
   become: yes
   vars_files:
-    - group_vars/flamingfir-refresh-env.yml
+    - ansible/group_vars/flamingfir-refresh-env.yml
   roles:
     - substrate-refresh
     - substrate-systemd
