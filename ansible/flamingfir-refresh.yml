@@ -1,9 +1,9 @@
 ---
-- hosts: all 
+- hosts: all
   gather_facts: False
   become: yes
   vars_files:
-    - group_vars/flamingfig-refresh-env.yml
+    - group_vars/flamingfir-refresh-env.yml
   roles:
     - substrate-refresh
     - substrate-systemd
